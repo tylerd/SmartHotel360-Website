@@ -1,0 +1,22 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  queue:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Azure/pipelines@v1
+        with:
+          azure-devops-project-url: 'https://dev.azure.com/tyler-msft/Demo-GH'
+          azure-pipeline-name: 'SmartHotel_Petchecker-Web'
+          azure-devops-token: '${{ secrets.AZURE_DEVOPS_TOKEN }}'
